@@ -1,0 +1,139 @@
+.open-poppins-400 {
+    font-family: "Poppins";
+    font-weight: 400;
+}
+
+.open-poppins-500 {
+    font-family: "Poppins";
+    font-weight: 500;
+}
+
+.open-poppins-700 {
+    font-family: "Poppins";
+    font-weight: 700;
+}
+
+.open-quicksand-500 {
+    font-family: "Quicksand";
+    font-weight: 500;
+}
+
+.open-quicksand-600 {
+    font-family: "Quicksand";
+    font-weight: 600;
+}
+
+.open-quicksand-700 {
+    font-family: "Quicksand";
+    font-weight: 700;
+}
+
+.bg-own-krem {
+    background-color: #fdf0d5;
+}
+
+.bg-own-gray {
+    background-color: #669bbc;
+}
+
+.bg-own-red {
+    background-color: #c1121f;
+}
+
+.bg-own-darkred {
+    background-color: #780000;
+}
+
+.bg-own-darkblue {
+    background-color: #003049;
+}
+
+.bg-own-lightgray {
+    background-color: #9fa3a6;
+}
+
+.text-own-white {
+    color: #ffffff;
+}
+
+.text-own-black {
+    color: #000000;
+}
+
+.text-own-red {
+    color: #c1121f;
+}
+
+.text-link-white {
+    color: #ffffff;
+}
+
+.text-link-black {
+    color: #000000;
+}
+
+.text-link-white:hover {
+    color: #000000;
+}
+
+.text-link-black:hover {
+    color: #ffffff;
+}
+
+.btn-own-krem {
+    background-color: #fdf0d5;
+}
+
+.btn-own-krem:hover {
+    background-color: #e2d6be;
+}
+
+.btn-own-lightgray {
+    background-color: #d3eaf9;
+}
+
+.btn-own-lightgray:hover {
+    background-color: #81abc8;
+}
+
+.btn-own-gray {
+    background-color: #669bbc;
+}
+
+.btn-own-gray:hover {
+    background-color: #527e99;
+}
+
+.btn-own-red {
+    background-color: #c1121f;
+}
+
+.btn-own-red:hover {
+    background-color: #94262d;
+}
+
+.btn-own-darkred {
+    background-color: #780000;
+}
+
+.btn-own-darkred:hover {
+    background-color: #b60b0b;
+}
+
+.btn-own-darkblue {
+    background-color: #003049;
+}
+
+.btn-own-darkblue:hover {
+    background-color: #026ba4;
+}
+
+.ul-nobullet {
+    list-style-type: none;
+}
+
+.li-nobullet {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
