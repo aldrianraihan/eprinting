@@ -22,7 +22,7 @@ class M_home extends CI_Model
     function last_code()
     {
         $query = $this->db->query(
-            "SELECT MAX(kode) AS last_code, date_order FROM trx_print"
+            "SELECT MAX(kode) AS last_code, MAX(date_order) AS date_order FROM trx_print"
         );
         return $query->result();
     }
@@ -46,7 +46,7 @@ class M_home extends CI_Model
     function trx($kode)
     {
         $query = $this->db->query(
-            "SELECT tp.id_trx, tp.kode, p.jenis_cetak, p.jenis_kertas, p.bw_color, p.harga, tp.jilid, tp.jumlah_halaman, tp.jumlah, tp.total_harga, tp.kekurangan_harga, tp.date_order, tp.nama_file, tp.lok_file, tp.payment, CASE WHEN tp.stat_payment = 'done' THEN 'lunas' WHEN tp.stat_payment = 'menunggu pembayaran' THEN 'menunggu pembayaran' ELSE '' END AS stat_payment FROM trx_print tp LEFT JOIN parameter p ON tp.id_parameter = p.id_parameter WHERE tp.kode = $kode"
+            "SELECT tp.id_trx, tp.kode, p.jenis_cetak, p.jenis_kertas, p.bw_color, p.harga, tp.jilid, tp.jumlah_halaman, tp.jumlah, tp.total_harga, tp.kekurangan_harga, tp.date_order, tp.nama_file, tp.lok_file, tp.payment, CASE WHEN tp.stat_payment = 'done' THEN 'lunas' WHEN tp.stat_payment = 'menunggu pembayaran' THEN 'menunggu pembayaran' ELSE '' END AS stat_payment, tp.panjang, tp.lebar FROM trx_print tp LEFT JOIN parameter p ON tp.id_parameter = p.id_parameter WHERE tp.kode = $kode"
         );
         return $query->result();
     }

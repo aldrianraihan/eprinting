@@ -26,32 +26,42 @@ class C_home extends CI_Controller
 
   function proses_login()
   {
-    // $username = $this->input->post('username');
-    // $password = $this->input->post('password');
-    // $password_hash = password_hash($password, PASSWORD_DEFAULT);
-    // $login = $this->input->post('login');
-    // $result_query = $this->m_home->cek_login($username);
-    // $cek = $result_query->num_rows();
-    // $result = $result_query->result();
+    $username = $this->input->post('username');
+    $password = $this->input->post('password');
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
+    $login = $this->input->post('login');
+    $result_query = $this->m_home->cek_login($username);
+    $cek = $result_query->num_rows();
+    $result = $result_query->result();
 
-    // if (isset($login)) {
-    //   if ($cek > 0) {
-    //     if (password_verify($password, $result[0]->password)) {
-    //       $this->session->set_userdata('status', 'masuk');
-    //       $this->session->set_userdata('username', $result[0]->username);
-    //       $this->session->set_userdata('level', $result[0]->level);
+    if (isset($login)) {
+      if ($cek > 0) {
+        if (password_verify($password, $result[0]->password)) {
+          $this->session->set_userdata('status', 'masuk');
+          $this->session->set_userdata('username', $result[0]->username);
+          $this->session->set_userdata('level', $result[0]->level);
 
-    //       echo "<script>alert('Selamat login berhasil')</script>";
-    //       redirect('c_user');
-    //     } else {
-    //       echo "<script>alert('Password salah')</script>";
-    //       $this->load->view('home');
-    //     }
-    //   } else {
-    //     echo "<script>alert('Username salah')</script>";
-    //     $this->load->view('home');
-    //   }
-    // }
+          if ($result[0]->level == 'admin') {
+            // echo "<script>alert('Selamat login berhasil')</script>";
+            redirect('c_admin');
+          } else {
+            echo "<script>alert('User tidak ditemukan')</script>";
+          }
+        } else {
+          echo "<script>alert('Password salah')</script>";
+          $this->load->view('home');
+        }
+      } else {
+        echo "<script>alert('Username salah')</script>";
+        $this->load->view('home');
+      }
+    }
+  }
+
+  function logout()
+  {
+    $this->session->sess_destroy();
+    redirect('c_home');
   }
 
   function cek()
@@ -145,6 +155,8 @@ class C_home extends CI_Controller
       'id_parameter' => $parameter[0]->id_parameter,
       'jilid' => $jilid,
       'jumlah_halaman' => $jumlah_halaman,
+      'panjang' => $panjang,
+      'lebar' => $lebar,
       'jumlah' => $jumlah,
       'total_harga' => $total_harga,
       'date_order' => date('Y-m-d H:i:s'),
@@ -274,6 +286,7 @@ class C_home extends CI_Controller
     $data = array(
       'stat_payment' => $stat_payment,
       'time_payment' => $time,
+      'stat_print' => 1,
       'nama_file_bb' => $file_name,
       'size_file_bb' => $file_size,
       'lok_file_bb' => $file_loc
@@ -321,11 +334,5 @@ class C_home extends CI_Controller
 
     $this->load->view('user/header');
     $this->load->view('user/done', $data);
-  }
-
-  function logout()
-  {
-    $this->session->sess_destroy();
-    redirect('c_home');
   }
 }
